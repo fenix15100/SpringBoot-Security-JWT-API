@@ -1,2 +1,2 @@
 # SpringBoot-Security-JWT-API
-SpringBoot API using Spring Security, JSON Web Tokens(JWT) and JPA
+Aplicación Full Stack desarrollada en SpringBoot(Web,Security,JWT,JPA) como Backend y Angular como Front end
