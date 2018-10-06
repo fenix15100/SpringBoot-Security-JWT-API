@@ -1,4 +1,4 @@
-package com.fenix15100.app;
+package com.fenix15100.springular;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
