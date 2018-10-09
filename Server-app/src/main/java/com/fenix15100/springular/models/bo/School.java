@@ -2,18 +2,17 @@ package com.fenix15100.springular.models.bo;
 
 
 import java.io.Serializable;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import com.fenix15100.springular.models.audit.DateAudit;
 
 
 
@@ -23,7 +22,7 @@ import javax.validation.constraints.Size;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="school")
-public class School  implements Serializable {
+public class School  extends DateAudit implements Serializable {
 
 
 	private  Integer id;
@@ -32,25 +31,25 @@ public class School  implements Serializable {
 
 	private String street;
 
-	private Set<Course> courses;
+
 	
 
 	public School() {
 	}
 
-	public School(Integer id_school, String name, String street, Set<Course> courses) {
+	public School(Integer id_school, String name, String street) {
 		super();
 		this.id = id_school;
 		this.name = name;
 		this.street = street;
-		this.courses = courses;
+
 	}
 	
-	public School(String name, String street, Set<Course> courses) {
+	public School(String name, String street) {
 		super();
 		this.name = name;
 		this.street = street;
-		this.courses = courses;
+
 	}
 
 	@Id
@@ -82,36 +81,5 @@ public class School  implements Serializable {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-
-
-	@OneToMany(mappedBy="school",cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(nullable=false)
-	
-	
-	public Set<Course> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
-	}
-
-	public Course addCourse(Course course) {
-		getCourses().add(course);
-		course.setSchool(this);
-		return course;
-	}
-	public Course removeCourse(Course course) {
-		getCourses().remove(course);
-		course.setSchool(null);
-		return course;
-	}
-
-
-
-
-
-
-
 
 }
